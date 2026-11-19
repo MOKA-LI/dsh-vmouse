@@ -60,6 +60,25 @@ dsh plugin --profile <你的 profile> add ./dsh-vmouse
 
 见 [docs/DETAIL.md](docs/DETAIL.md)，8 个工具，前缀 `vmouse_`。
 
+## 当 MCP 服务器用
+
+这个包同时是一个标准 MCP（stdio）服务器，任何 MCP 客户端都能挂载，行为与 DSH 插件一致：
+
+```json
+{
+  "mcpServers": {
+    "vmouse": {
+      "command": "node",
+      "args": ["/绝对路径/dsh-vmouse/mcp/server.mjs"]
+    }
+  }
+}
+```
+
+- 自检：`node mcp/server.mjs --selftest`
+- 工具：`vmouse_ping`、`vmouse_apps`、`vmouse_tree`、`vmouse_click`、`vmouse_type`、`vmouse_key`、`vmouse_scroll`、`vmouse_shot`
+- `vmouse_shot` 会同时返回文本path和 `image/png` 内容块，视觉客户端可直接看图。
+
 ## 限制
 
 - 没有无障碍树的自绘界面（部分游戏/画布）只能坐标操作，少数应用只接受前台点击。

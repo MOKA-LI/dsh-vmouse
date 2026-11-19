@@ -13,10 +13,12 @@
   "files": [
     "index.js",
     "helper/vmouse-helper.swift",
+    "mcp/server.mjs",
     "locale/*.json",
     "cordis.patch.yml",
     "docs",
-    "icon.svg"
+    "icon.svg",
+    "README.md"
   ],
   "dsh": {
     "bundle": {
@@ -27,9 +29,21 @@
     "dsh": ">=0.2.1-0 <0.3.0"
   },
   "keywords": [
-    "dsh", "dsh-plugin", "deepseek-harness", "cordis", "macos",
-    "virtual-mouse", "computer-use", "accessibility", "desktop-automation"
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "macos",
+    "virtual-mouse",
+    "computer-use",
+    "accessibility",
+    "desktop-automation"
   ],
-  "os": ["darwin"],
-  "license": "MIT"
+  "os": [
+    "darwin"
+  ],
+  "license": "MIT",
+  "bin": {
+    "dsh-vmouse-mcp": "./mcp/server.mjs"
+  }
 }
