@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Virtual mouse",
+    "description": "Drive other macOS apps with a virtual pointer: read accessibility trees, click, type, scroll and capture one window without moving your physical cursor or stealing focus.",
+    "detail": "docs/DETAIL.md"
+  }
+}

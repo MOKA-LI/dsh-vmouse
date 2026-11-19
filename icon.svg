@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Virtual mouse">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#232B3E"/>
+      <stop offset="1" stop-color="#141926"/>
+    </linearGradient>
+    <linearGradient id="ghost" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7FD4FF"/>
+      <stop offset="1" stop-color="#4B8BFF"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="52" fill="url(#bg)"/>
+  <!-- trajectory of the virtual pointer -->
+  <path d="M52 196 C 92 176, 108 118, 152 96" fill="none" stroke="#7FD4FF" stroke-opacity="0.55"
+        stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12"/>
+  <!-- the real pointer, at rest -->
+  <path d="M58 66 L58 150 L80 129 L95 162 L112 154 L97 122 L127 120 Z"
+        fill="#E9EEF8" stroke="#0B0F17" stroke-width="4" stroke-linejoin="round"/>
+  <!-- the virtual pointer, elsewhere -->
+  <path d="M148 92 L148 176 L170 155 L185 188 L202 180 L187 148 L217 146 Z"
+        fill="url(#ghost)" fill-opacity="0.9" stroke="#BDE9FF" stroke-width="4"
+        stroke-linejoin="round" stroke-dasharray="9 7"/>
+  <!-- click ripple on the virtual side -->
+  <circle cx="205" cy="205" r="15" fill="none" stroke="#7FD4FF" stroke-opacity="0.7" stroke-width="4"/>
+  <circle cx="205" cy="205" r="5" fill="#7FD4FF"/>
+</svg>

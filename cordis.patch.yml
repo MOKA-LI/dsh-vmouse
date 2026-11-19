@@ -1,0 +1,4 @@
+- insert:
+    - id: dsh-vmouse
+      name: dsh-vmouse
+      config: {}
