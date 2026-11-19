@@ -70,11 +70,27 @@ func axSize(_ el: AXUIElement, _ name: String) -> CGSize? {
     return s
 }
 
+func shortRole(_ role: String) -> String {
+    var r = role
+    if r.hasPrefix("AX") { r = String(r.dropFirst(2)) }
+    return r.lowercased()
+}
+
+/// Accessibility custom actions arrive as long pseudo-strings
+/// ("name:…\ntarget:0x0\nselector:…") that only burn tokens, so keep the
+/// standard ones only.
+let standardActions: Set<String> = [
+    "press", "showmenu", "pick", "confirm", "cancel", "increment", "decrement",
+    "setvalue", "scrolltovisible", "raise", "edit", "open", "accept", "delete",
+    "showdefaultui", "showalternateui", "showhelp",
+    "scrollupbypage", "scrolldownbypage", "scrollleftbypage", "scrollrightbypage",
+]
+
 func axActions(_ el: AXUIElement) -> [String] {
     var names: CFArray?
     guard AXUIElementCopyActionNames(el, &names) == .success,
           let arr = names as? [String] else { return [] }
-    return arr
+    return arr.filter { !$0.contains("\n") && standardActions.contains(shortRole($0)) }
 }
 
 func axChildren(_ el: AXUIElement) -> [AXUIElement] {
@@ -180,12 +196,6 @@ func snapshot(_ id: String?) -> Snapshot? {
 }
 
 // MARK: - role cleanup
-
-func shortRole(_ role: String) -> String {
-    var r = role
-    if r.hasPrefix("AX") { r = String(r.dropFirst(2)) }
-    return r.lowercased()
-}
 
 func decodeText(_ el: AXUIElement) -> String? {
     guard let v = axAttr(el, kAXValueAttribute) else { return nil }
